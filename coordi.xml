@@ -1,5 +1,5 @@
 <context>
-    <input pattern="(hola|buen) *">
+    <input pattern="(hola|buen)*">
         <!-- Greet the user if we know his/her name -->
         <output value="Hola $UserName" if="full($UserName)"/>
 
@@ -14,11 +14,11 @@
             </input>
         </context>
     </input>
-    <input  pattern="* (beca) *">
+    <input  pattern="*(beca)*">
         <output value="Comunícate a la página de la Unidad de Becas: https://www.facebook.com/search/top/?q=unidad%20de%20becas%20e%20intercambios%20cuci%C3%A9nega"/>
         <output value="Comunícate a la Unidad de Becas del CUCI: http://cuci.udg.mx/directorio/Unidad-de-Becas-e-Intercambios"/>
     </input>
-    <input  pattern="*(gracias) *">
+    <input  pattern="*(gracias)*">
         <output value="Es un placer servirte."/>
         <output value="De nada, hasta pronto."/>
         <output value="Para mí es un placer servirte."/>
