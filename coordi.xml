@@ -1,26 +1,32 @@
 <context>
     <input pattern="(hola|buen)*">
         <!-- Greet the user if we know his/her name -->
-        <output value="Hola $UserName" if="full($UserName)"/>
+        <output value="Hola estudiante con código $codigo" if="full($codigo)"/>
 
         <!-- Or activate an inner context to ask the user about his/her name -->
-        <context if="empty($UserName)" modal="true"> <!-- We use a modal context, so our bot will recognize any text as the user’s name -->
+        <context if="empty($codigo)" modal="true"> <!-- We use a modal context, so our bot will recognize any text as the user’s name -->
             <output value="¡Hola! ¿Cuál es tu código?"/>
 
-            <input pattern="$Text">
+            <input pattern="* $Number">
                 <!-- Store the user’s name in the UserName variable with "user" scope to save it into database -->
-                <var name="UserName" value="$Text" scope="user"/>
-                <output value="Saludos estudiante $UserName!"/> <!-- Using the placeholder in output -->
+                <var name="codigo" value="$Number" scope="user"/>
+                <output value="Saludos estudiante con código $codigo."/> <!-- Using the placeholder in output -->
+            </input>
+            <input pattern="no [lo] (tengo|sé|se)">
+                <output value="Acude a ventanilla de Control Escolar para que te lo indiquen, lleva una identificación."/>
             </input>
         </context>
     </input>
-    <input  pattern="*(beca)*">
+    <input  pattern="* beca*">
         <output value="Comunícate a la página de la Unidad de Becas: https://www.facebook.com/search/top/?q=unidad%20de%20becas%20e%20intercambios%20cuci%C3%A9nega"/>
-        <output value="Comunícate a la Unidad de Becas del CUCI: http://cuci.udg.mx/directorio/Unidad-de-Becas-e-Intercambios"/>
+        <output value="Comunícate con la Unidad de Becas del CUCI: http://cuci.udg.mx/directorio/Unidad-de-Becas-e-Intercambios"/>
     </input>
     <input  pattern="*(gracias)*">
         <output value="Es un placer servirte."/>
         <output value="De nada, hasta pronto."/>
         <output value="Para mí es un placer servirte."/>
+    </input>
+    <input  pattern="*(adios|adiós)*">
+        <output value="Adiós."/>
     </input>
 </context>
